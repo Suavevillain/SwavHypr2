@@ -1,0 +1,96 @@
+{
+  "layer": "top",
+  "height": 10,
+  "position": "bottom",
+  "output": ["HDMI-A-2","DP-2"],
+  "spacing": 5,
+  "modules-left": [
+    "custom/rofi",
+    "clock#date"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "clock",
+    "pulseaudio"
+  ],
+  "custom/rofi": {
+    "format": "<span ></span>",
+    "on-click": "rofi -show drun -disable-history -show-icons",
+    "on-click-right": "~/.config/custom_scripts/power.sh",
+    "escape": true,
+    "tooltip": false
+  },
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "active-only": false,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "<span ></span>",
+      "2": "<span ></span>",
+      "3": "<span ></span>",
+      "4": "<span ></span>",
+      "5": "<span ></span>",
+      "6": "<span >󰭛</span>",
+      "7": "<span >󱓷</span>",
+      "8": "<span >󰚀</span>",
+      "9": "<span ></span>",
+      "10": "<span ></span>"
+    }
+  },
+  "hyprland/window": {
+    "format": "<span color='#202020' bgcolor='#d3869b' > 󰣆 </span> {class}",
+    "separate-outputs": true,
+    "icon": false,
+    "tooltip": false
+  },
+  "tray": {
+    "icon-size": 15,
+    "spacing": 8
+  },
+
+  "pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "<span color='#202020' bgcolor='#83a598' >  </span> {volume}%",
+    "format-muted": "<span color='#202020' bgcolor='#ea6962' >  </span> {volume}%",
+    "format-bluetooth": "<span color='#202020' bgcolor='#83a598' > 󰂰 </span> {volume}%",
+    "format-bluetooth-muted": "<span color='#202020' bgcolor='#ea6962' > 󰂲 </span> {volume}%",
+    "format-source": "{volume}% ",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol",
+    "tooltip": false,
+    "max-volume": 130
+  },
+
+
+"custom/memory": {
+  "exec": "~/.config/waybar/scripts/memory_usage.sh",
+  "interval": 2,
+  "return-type": "json",
+  "format": "<span color='#202020' bgcolor='#458588'>  </span> {}"
+},
+
+
+"custom/weather": {
+    "format": "{}°",
+    "tooltip": true,
+    "interval": 3600,
+    "exec": "/home/swavlabs/.local/bin/wttrbar --fahrenheit --mph",
+    "return-type": "json"
+},
+  "clock#date": {
+  "format": "<span color='#202020' bgcolor='#FE7047'>  </span> {:%a %d %b}",
+  "interval": 60,
+  "tooltip": false
+},
+
+  "clock": {
+    // "timezone": "America/New_York",
+    "format": "<span color='#202020' bgcolor='#FE7047' > 󰥔 </span> {:%I:%M:%S %p}",
+    "tooltip": false,
+    "interval": 1
+  }
+}
